@@ -9,6 +9,7 @@ node {
       mvnHome = tool 'M3'
    }
    stage('Build') {
+     input message: "Promote", ok: "yes", submitter: "dev"
       // Run the maven build
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
